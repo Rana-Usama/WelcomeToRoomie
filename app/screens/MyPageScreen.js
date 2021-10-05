@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, StatusBar, Text, TouchableOpacity, ScrollView } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
+
 //components
 import Screen from './../components/Screen';
-//config
-import Colors from './../config/Colors';
 import AppTextInput from './../components/common/AppTextInput';
 import BottomTab from '../components/common/BottomTab';
+
+//config
+import Colors from './../config/Colors';
 
 
 function MyPageScreen(props) {
@@ -92,7 +94,7 @@ function MyPageScreen(props) {
                 </View>
             </ScrollView>
             {/* Bottom Tab */}
-            <BottomTab />
+            <BottomTab onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
 
         </Screen>
     );
