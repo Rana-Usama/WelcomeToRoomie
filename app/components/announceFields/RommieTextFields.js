@@ -21,35 +21,35 @@ function RoomieTextFields(props) {
             placeHolder: "Name",
             value: '',
             secure: false,
-            icon: false
+            icon: "account"
         },
         {
             id: 1,
             placeHolder: "Age",
             value: '',
             secure: false,
-            icon: false
+            icon: "account-clock"
         },
         {
-            id: 1,
+            id: 2,
             placeHolder: "Status",
             value: '',
             secure: false,
-            icon: false
+            icon: "ring"
         },
         {
             id: 1,
             placeHolder: "Place",
             value: '',
             secure: false,
-            icon: false
+            icon: "map-marker"
         },
         {
             id: 1,
             placeHolder: "Size",
             value: '',
             secure: false,
-            icon: false
+            icon: "move-resize-variant"
         },
         {
             id: 1,

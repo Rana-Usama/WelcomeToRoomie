@@ -9,7 +9,7 @@ import Colors from '../../config/Colors';
 
 function BottomTab({ onPressMapIcon = () => { }, onPressSearchIcon = () => { }, onPressHomeIcon = () => { } }) {
     return (
-        <View style={{ flexDirection: 'row', alignItems: 'center', position: 'absolute', justifyContent: 'center', bottom: 0, width: "100%", height: RFPercentage(7), backgroundColor: Colors.primaryLight2 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', position: 'absolute', justifyContent: 'center', bottom: 0, width: "100%", height: RFPercentage(7), backgroundColor: Colors.primary }}>
             <TouchableOpacity onPress={onPressHomeIcon} style={{ position: 'absolute', left: RFPercentage(4) }}>
                 <MaterialIcons name="home" size={RFPercentage(4)} color={Colors.white} />
             </TouchableOpacity>

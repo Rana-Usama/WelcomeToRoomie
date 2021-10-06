@@ -47,10 +47,11 @@ function Login(props) {
             return true;
         }
 
-        props.navigation.navigate("AnnounceScreen")
 
         try {
-            // API integration will come here
+            // API call
+
+            props.navigation.navigate("MyPageScreen")
         } catch (error) {
             alert("Login Error");
         }

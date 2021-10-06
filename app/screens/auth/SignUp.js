@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
@@ -62,7 +62,8 @@ function SignUp(props) {
         }
 
         try {
-            // API integration will come here
+            // API call
+
         } catch (error) {
             alert("Login Error");
         }
