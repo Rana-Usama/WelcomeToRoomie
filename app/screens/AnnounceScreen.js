@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar, StyleSheet, Text, View, TouchableOpacity, Animated, ScrollView, Dimensions, Image, Platform } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Animated, ScrollView, Dimensions, Image } from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
+import * as ImagePicker from 'expo-image-picker';
+
 
 // components
 import RoomieTextFields from '../components/announceFields/RommieTextFields';
@@ -10,12 +12,38 @@ import Screen from './../components/Screen';
 
 // config
 import Colors from '../config/Colors';
-import SearchScreen from './SearchScreen';
-
 
 const { width } = Dimensions.get("window");
 
 function AnnounceScreen(props) {
+
+    const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            if (Platform.OS !== 'web') {
+                const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+                if (status !== 'granted') {
+                    alert('Sorry, we need camera roll permissions to make this work!');
+                }
+            }
+        })();
+    }, []);
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        console.log(result);
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
 
     const [initialComponent, setinitialComponent] = useState(0);
     const [active, setActive] = useState(0);
@@ -72,11 +100,16 @@ function AnnounceScreen(props) {
             </View>
 
             {/* Adding Vedio */}
-            <TouchableOpacity style={{ marginTop: RFPercentage(5), width: '70%', backgroundColor: Colors.lightGrey, height: RFPercentage(25), alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ color: Colors.grey, fontSize: RFPercentage(2.5) }}>
-                    Add Vedio
-                </Text>
+            <TouchableOpacity onPress={pickImage} style={{ marginTop: RFPercentage(5), width: '70%', backgroundColor: Colors.lightGrey, height: RFPercentage(25), alignItems: 'center', justifyContent: 'center' }}>
+                {image && <Image source={{ uri: image }} style={{ width: '100%', height: '100%' }} />
+                    ||
+                    <Text style={{ color: Colors.grey, fontSize: RFPercentage(2.5) }}>
+                        Add Vedio
+                    </Text>
+                }
+
             </TouchableOpacity>
+
             {/* Bottom Contaienr */}
             <View style={{ borderTopRightRadius: RFPercentage(4), borderTopLeftRadius: RFPercentage(4), backgroundColor: Colors.white, width: "100%", flex: 2, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} >
                 {/* Tabs */}
@@ -112,7 +145,7 @@ function AnnounceScreen(props) {
                 </View>
             </View>
             {/* BottomTab */}
-            <BottomTab onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
+            <BottomTab onPressHomeIcon={() => props.navigation.navigate("MyPageScreen")} onPressMapIcon={() => props.navigation.navigate("MapScreen")} onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
         </Screen>
     );
 }

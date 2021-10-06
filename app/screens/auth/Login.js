@@ -7,8 +7,6 @@ import AppTextInput from "../../components/common/AppTextInput"
 import AppTextButton from "../../components/common/AppTextButton"
 import LoadingModal from "../../components/common/LoadingModal"
 
-// services
-
 // config
 import Colors from '../../config/Colors';
 
@@ -48,6 +46,8 @@ function Login(props) {
             showIndicator(false);
             return true;
         }
+
+        props.navigation.navigate("AnnounceScreen")
 
         try {
             // API integration will come here

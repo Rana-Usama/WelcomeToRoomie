@@ -23,18 +23,16 @@ function MapScreen(props) {
                 <MapView style={styles.map} />
             </View>
             {/* Bottom Tab */}
-            <BottomTab />
+            <BottomTab onPressHomeIcon={() => props.navigation.navigate("MyPageScreen")} onPressMapIcon={() => props.navigation.navigate("MapScreen")} onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
         </Screen>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1.5,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        // marginTop: RFPercentage(2)
     },
     map: {
         width: Dimensions.get('window').width,

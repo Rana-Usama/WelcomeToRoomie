@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, StatusBar, Text, TouchableOpacity, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, StatusBar, Text, TouchableOpacity, ScrollView, Image } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
+import * as ImagePicker from 'expo-image-picker';
 
 //components
 import Screen from './../components/Screen';
@@ -12,6 +13,33 @@ import Colors from './../config/Colors';
 
 
 function MyPageScreen(props) {
+    const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            if (Platform.OS !== 'web') {
+                const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+                if (status !== 'granted') {
+                    alert('Sorry, we need camera roll permissions to make this work!');
+                }
+            }
+        })();
+    }, []);
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        console.log(result);
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
 
     const [inputField, setInputFeild] = useState([
         {
@@ -66,10 +94,14 @@ function MyPageScreen(props) {
                 </Text>
             </View>
             {/* Adding Vedio */}
-            <TouchableOpacity style={{ marginTop: RFPercentage(5), width: '70%', backgroundColor: Colors.lightGrey, height: RFPercentage(25), alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ color: Colors.grey, fontSize: RFPercentage(2.5) }}>
-                    Add Vedio
-                </Text>
+            <TouchableOpacity onPress={pickImage} style={{ marginTop: RFPercentage(5), width: '70%', backgroundColor: Colors.lightGrey, height: RFPercentage(25), alignItems: 'center', justifyContent: 'center' }}>
+                {image && <Image source={{ uri: image }} style={{ width: '100%', height: '100%' }} />
+                    ||
+                    <Text style={{ color: Colors.grey, fontSize: RFPercentage(2.5) }}>
+                        Add Vedio
+                    </Text>
+                }
+
             </TouchableOpacity>
 
             {/* input Fields */}
@@ -94,7 +126,7 @@ function MyPageScreen(props) {
                 </View>
             </ScrollView>
             {/* Bottom Tab */}
-            <BottomTab onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
+            <BottomTab onPressMapIcon={() => props.navigation.navigate("MapScreen")} onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
 
         </Screen>
     );
