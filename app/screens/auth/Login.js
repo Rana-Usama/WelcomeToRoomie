@@ -51,7 +51,7 @@ function Login(props) {
         try {
             // API call
 
-            props.navigation.navigate("MyPageScreen")
+            props.navigation.navigate("HomeTabs")
         } catch (error) {
             alert("Login Error");
         }
