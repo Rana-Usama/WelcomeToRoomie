@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, StyleSheet, StatusBar, Text, TouchableOpacity, ScrollView, Image, Modal } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, Modal } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import * as ImagePicker from 'expo-image-picker';
 import { Video, AVPlaybackStatus } from 'expo-av';
@@ -104,13 +104,15 @@ function MyPageScreen(props) {
         <Screen statusBarColor={Colors.white} style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', backgroundColor: Colors.white }}>
             <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: Colors.white, flex: 1, width: '100%', marginTop: RFPercentage(1) }} >
                 <View style={{ justifyContent: 'center', alignItems: 'center', width: "100%" }}>
+
                     {/* Top Heading */}
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={{ color: Colors.primary, fontSize: RFPercentage(4.2), marginTop: RFPercentage(5) }}>
                             My Page
                         </Text>
                     </View>
-                    {/* Adding Vedio */}
+
+                    {/* Adding Video */}
                     {!pickedVideo ?
                         <TouchableOpacity onPress={() => setmodelVisible(true)} style={{ marginTop: RFPercentage(5), width: '70%', backgroundColor: Colors.lightGrey, height: RFPercentage(25), alignItems: 'center', justifyContent: 'center' }}>
                             <Text style={{ color: Colors.grey, fontSize: RFPercentage(2.5) }}>

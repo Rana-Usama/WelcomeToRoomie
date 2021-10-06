@@ -4,7 +4,6 @@ import { RFPercentage } from 'react-native-responsive-fontsize';
 
 // components
 import AppTextInput from "../../components/common/AppTextInput"
-import AppTextButton from "../../components/common/AppTextButton"
 import LoadingModal from "../../components/common/LoadingModal"
 
 
@@ -20,35 +19,35 @@ function RoomTextFields(props) {
             placeHolder: "Name",
             value: '',
             secure: false,
-            icon: false
+            icon: "account"
         },
         {
             id: 1,
             placeHolder: "Age",
             value: '',
             secure: false,
-            icon: false
+            icon: "account-clock"
         },
         {
             id: 2,
             placeHolder: "Status",
             value: '',
             secure: false,
-            icon: false
+            icon: "ring"
         },
         {
-            id: 3,
+            id: 1,
             placeHolder: "Place",
             value: '',
             secure: false,
-            icon: false
+            icon: "map-marker"
         },
         {
             id: 4,
             placeHolder: "Prefferd Place",
             value: '',
             secure: false,
-            icon: false
+            icon: "map-marker"
         },
         {
             id: 5,
@@ -103,7 +102,6 @@ function RoomTextFields(props) {
                     <Text style={{ marginBottom: RFPercentage(2) }} >{item.placeHolder}</Text>
                     <AppTextInput
                         placeHolder={item.placeHolder}
-                        backgroundColor={Colors.inputFieldBackgroundColor}
                         width="100%"
                         value={item.value}
                         onChange={(text) => handleChange(text, item.id)}

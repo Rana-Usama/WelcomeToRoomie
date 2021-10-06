@@ -97,7 +97,6 @@ function RoomieTextFields(props) {
                 <View key={i} style={{ marginTop: i == 0 ? RFPercentage(0) : RFPercentage(3), width: "100%" }} >
                     <Text style={{ marginBottom: RFPercentage(2) }} >{item.placeHolder}</Text>
                     <AppTextInput
-                        backgroundColor={Colors.inputFieldBackgroundColor}
                         placeHolder={item.placeHolder}
                         width="100%"
                         value={item.value}
