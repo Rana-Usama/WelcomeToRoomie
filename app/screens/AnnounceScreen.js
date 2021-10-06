@@ -184,7 +184,8 @@ function AnnounceScreen(props) {
             </ScrollView>
 
             {/* BottomTab */}
-            <BottomTab onPressHomeIcon={() => props.navigation.navigate("MyPageScreen")} onPressMapIcon={() => props.navigation.navigate("MapScreen")} onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
+            <BottomTab props={props} />
+
             <Modal visible={modelVisible} transparent={true}  >
                 <View style={{ width: '100%', justifyContent: "center", alignItems: "center", flex: 1 }}>
                     <View style={{

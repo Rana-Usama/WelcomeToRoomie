@@ -47,8 +47,9 @@ function SearchScreen(props) {
                     </View>
                 )}
             </View>
+
             {/* Bottom Tab */}
-            <BottomTab onPressHomeIcon={() => props.navigation.navigate("MyPageScreen")} onPressMapIcon={() => props.navigation.navigate("MapScreen")} onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
+            <BottomTab props={props} />
         </Screen>
     );
 }

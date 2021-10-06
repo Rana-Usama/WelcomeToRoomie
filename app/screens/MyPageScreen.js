@@ -155,10 +155,11 @@ function MyPageScreen(props) {
                             )}
                         </View>
                     </View>
-                    {/* Bottom Tab */}
                 </View>
             </ScrollView>
-            <BottomTab onPressMapIcon={() => props.navigation.navigate("MapScreen")} onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
+
+            {/* Bottom Tab */}
+            <BottomTab props={props} />
 
             <Modal visible={modelVisible} transparent={true}  >
                 <View style={{ width: '100%', justifyContent: "center", alignItems: "center", flex: 1 }}>

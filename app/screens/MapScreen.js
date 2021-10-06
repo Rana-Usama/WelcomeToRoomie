@@ -22,8 +22,9 @@ function MapScreen(props) {
             <View style={styles.container}>
                 <MapView style={styles.map} />
             </View>
+
             {/* Bottom Tab */}
-            <BottomTab onPressHomeIcon={() => props.navigation.navigate("MyPageScreen")} onPressMapIcon={() => props.navigation.navigate("MapScreen")} onPressSearchIcon={() => props.navigation.navigate("SearchScreen")} />
+            <BottomTab props={props} />
         </Screen>
     );
 }
