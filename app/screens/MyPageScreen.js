@@ -20,19 +20,17 @@ function MyPageScreen(props) {
     const video = useRef(null);
     const [status, setStatus] = useState({});
 
-    useEffect(() => {
-        (async () => {
-            if (Platform.OS !== 'web') {
-                const { status } = [await ImagePicker.requestMediaLibraryPermissionsAsync(), await ImagePicker.requestCameraPermissionsAsync()
-                    , await ImagePicker.getCameraPermissionsAsync()];
-                if (status !== 'granted') {
-                    alert('Sorry, we need camera roll permissions to make this work!');
-                }
-            }
-        })();
-    }, []);
-
     const pickVideo = async (pickerType) => {
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+        await ImagePicker.requestCameraPermissionsAsync()
+        await ImagePicker.getCameraPermissionsAsync()
+        let permissionResult = await ImagePicker.getMediaLibraryPermissionsAsync();
+
+        if (permissionResult.granted === false) {
+            alert("Permission to access camera roll is required!");
+            return;
+        }
+
         let result;
 
         if (pickerType === "gallery") {
