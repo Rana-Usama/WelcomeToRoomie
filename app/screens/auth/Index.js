@@ -67,7 +67,7 @@ function LoginScreen(props) {
             {/* Wecome Text */}
             <View style={{ backgroundColor: Colors.primary, width: "100%", flex: 0.78, flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} >
                 <Text style={{ color: Colors.white, fontSize: RFPercentage(3.6) }}>
-                    Welcome To Rommie
+                    Welcome To Roomy
                 </Text>
             </View>
 

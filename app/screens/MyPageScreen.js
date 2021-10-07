@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView, Modal } from 'react-native'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import * as ImagePicker from 'expo-image-picker';
 import { Video, AVPlaybackStatus } from 'expo-av';
+import { Entypo } from "@expo/vector-icons";
 
 //components
 import Screen from './../components/Screen';
@@ -40,6 +41,7 @@ function MyPageScreen(props) {
                 aspect: [4, 3],
                 quality: 1,
             });
+            setmodelVisible(false)
         } else if (pickerType === "camera") {
             result = await ImagePicker.launchCameraAsync({
                 mediaTypes: ImagePicker.MediaTypeOptions.Videos,
@@ -47,6 +49,7 @@ function MyPageScreen(props) {
                 aspect: [4, 3],
                 quality: 1,
             });
+            setmodelVisible(false)
         }
 
         console.log(result);
@@ -116,7 +119,7 @@ function MyPageScreen(props) {
                     {!pickedVideo ?
                         <TouchableOpacity onPress={() => setmodelVisible(true)} style={{ marginTop: RFPercentage(5), width: '70%', backgroundColor: Colors.lightGrey, height: RFPercentage(25), alignItems: 'center', justifyContent: 'center' }}>
                             <Text style={{ color: Colors.grey, fontSize: RFPercentage(2.5) }}>
-                                Add Vedio
+                                Add Video
                             </Text>
                         </TouchableOpacity>
                         : <View style={{ marginTop: RFPercentage(5), width: '70%', alignItems: 'center', justifyContent: 'center' }}>
@@ -174,14 +177,15 @@ function MyPageScreen(props) {
 
                         elevation: 4, justifyContent: "space-evenly", alignItems: 'center', width: RFPercentage(40), height: RFPercentage(18), backgroundColor: Colors.white, borderRadius: 15
                     }} >
+                        <TouchableOpacity onPress={() => setmodelVisible(false)} >
+                            <Entypo size={RFPercentage(3)} name="cross" color={Colors.grey} />
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
-                            setmodelVisible(false)
                             pickVideo("camera")
                         }} style={{ width: "70%", borderWidth: 1, borderRadius: 10, borderColor: Colors.mediumGrey, height: RFPercentage(5), justifyContent: "center", alignItems: "center" }} >
                             <Text style={{ fontSize: RFPercentage(2.2) }} >Select Camera</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
-                            setmodelVisible(false)
                             pickVideo("gallery")
                         }} style={{ width: "70%", borderWidth: 1, borderRadius: 10, borderColor: Colors.mediumGrey, height: RFPercentage(5), justifyContent: "center", alignItems: "center" }} >
                             <Text style={{ fontSize: RFPercentage(2.2) }} >Select Gallery</Text>

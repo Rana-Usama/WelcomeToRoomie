@@ -20,14 +20,15 @@ function SignUp(props) {
             placeHolder: "Enter your Email",
             value: '',
             secure: false,
-            icon: "account"
+            icon: "email-outline"
+
         },
         {
             id: 1,
             placeHolder: "Enter your Name",
             value: '',
             secure: false,
-            icon: "email-outline"
+            icon: "account"
         },
         {
             id: 2,
